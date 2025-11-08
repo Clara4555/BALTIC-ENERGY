@@ -1,8 +1,20 @@
 /* Contact Page Specific Styles */
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+body, html{
+    overflow-x: hidden;
+}
 /* Hero Section */
 .contact-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/img1881.png');
+    background:  url('../assets/MOCKUPS/img1881.png');
     background-size: cover;
     background-position: center;
     color: white;
@@ -241,12 +253,15 @@
 .map-placeholder {
     height: 400px;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/K1.jpg');
-    background-size: cover;
+   background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-repeat: no-repeat;
+    color: white;
+    margin-top: 30px;
+    padding: 120px 0 80px;
+    text-align: center;
     position: relative;
+    overflow: hidden;
 }
 
 .map-content {
@@ -258,7 +273,7 @@
 .map-content i {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
-    color: var(--primary-color);
+   
 }
 
 .map-content h3 {

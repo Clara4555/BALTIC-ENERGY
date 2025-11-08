@@ -155,39 +155,5 @@ function animateTimelineItem(item) {
     }, delay);
 }
 
-// Google Translate functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const translateToggle = document.querySelector('.translate-toggle');
-    const headerControls = document.querySelector('.header-controls');
-    
-    if (translateToggle) {
-        translateToggle.addEventListener('click', function() {
-            headerControls.classList.toggle('open');
-            const isExpanded = headerControls.classList.contains('open');
-            this.setAttribute('aria-expanded', isExpanded);
-            document.getElementById('google_translate_element').setAttribute('aria-hidden', !isExpanded);
-        });
-        
-        // Close translator when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!headerControls.contains(event.target) && headerControls.classList.contains('open')) {
-                headerControls.classList.remove('open');
-                translateToggle.setAttribute('aria-expanded', 'false');
-                document.getElementById('google_translate_element').setAttribute('aria-hidden', 'true');
-            }
-        });
-    }
-});
 
-// Loader functionality
-window.addEventListener('load', function() {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('fade-out');
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
-        }, 1000);
-    }
-});
+

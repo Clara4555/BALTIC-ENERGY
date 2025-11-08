@@ -49,17 +49,21 @@
 }
 
 /* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* EMERGENCY FIX - Add this to your current CSS */
+body, html {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-html {
-  scroll-behavior: smooth;
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 15px !important;
 }
-body, html{
-    overflow-x: hidden;
+
+* {
+  max-width: 100% !important;
 }
 
 body {
@@ -73,6 +77,35 @@ body {
     width: 100%;
   background-color: var(--background);
   transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+/* Responsive image styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Hero image specific styles */
+.hero-image, .slide img {
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.hero-image.loading, .slide img.loading {
+    opacity: 0;
+}
+
+.hero-image.loaded, .slide img.loaded {
+    opacity: 1;
+}
+
+/* Mobile-specific image adjustments */
+@media (max-width: 768px) {
+    .hero-image, .slide img {
+        /* Adjust height for mobile if needed */
+        max-height: 60vh;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,14 +1,163 @@
 /* Who We Are Page Specific Styles */
 
 /* Hero Section */
+/* Who We Are Page Specific Styles */
+
+/* Hero Section - UPDATED FOR MOBILE */
+/* Base Styles */
+/* EMERGENCY FIX - Add this to your current CSS */
+body, html {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 15px !important;
+}
+
+* {
+  max-width: 100% !important;
+}
 .who-we-are-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/MOCKUPS/K1.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/MOCKUPS/K1.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
-    padding: 150px 0 100px;
+    margin-top: 30px;
+    padding: 120px 0 80px;
     text-align: center;
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Remove background-attachment: fixed for mobile compatibility */
+.who-we-are-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* CTA Section - UPDATED FOR MOBILE */
+.who-we-are-cta {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/K5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+}
+
+.who-we-are-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: -1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content h2 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-content p {
+    color: white;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+    font-size: 1.1rem;
+}
+
+/* Mobile-First Responsive Design */
+@media (max-width: 768px) {
+    .who-we-are-hero {
+        padding: 100px 0 60px;
+        min-height: 50vh;
+        /* Optional: Use different image for mobile if needed */
+        /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/MOCKUPS/K1-mobile.jpg'); */
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .who-we-are-cta {
+        padding: var(--spacing-lg) 0;
+        /* Optional: Use different image for mobile if needed */
+        /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/K5-mobile.jpg'); */
+    }
+    
+    .cta-content h2 {
+        font-size: 1.5rem;
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .who-we-are-hero {
+        padding: 80px 0 40px;
+        min-height: 40vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
 }
 
 .hero-content h1 {

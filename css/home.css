@@ -3,9 +3,8 @@
   position: relative;
   height: 100vh;
   min-height: 600px;
-  overflow: hidden;
-  margin-top: 0;
-  padding: 0;
+  margin-top: 20px;
+
 }
 
 .hero-slider {
@@ -275,7 +274,7 @@
 .image-card {
   position: relative;
   border-radius: var(--radius-lg);
-  overflow: hidden;
+ 
   box-shadow: var(--shadow-lg);
 }
 
@@ -328,7 +327,7 @@
 .feature-card {
   background: var(--surface);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+ 
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   border: 1px solid var(--border);
@@ -341,7 +340,7 @@
 
 .feature-image {
   height: 200px;
-  overflow: hidden;
+ 
 }
 
 .feature-image img {
@@ -392,7 +391,7 @@
   transition: all var(--transition-normal);
   border: 1px solid var(--border);
   position: relative;
-  overflow: hidden;
+ 
 }
 
 .service-card::before {
@@ -539,7 +538,7 @@
 
 .project-image {
   border-radius: var(--radius-lg);
-  overflow: hidden;
+ 
   box-shadow: var(--shadow-xl);
 }
 
@@ -614,7 +613,7 @@
   background: var(--background);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
+ 
   border: 1px solid var(--border);
 }
 
@@ -694,7 +693,7 @@
 .news-card {
   background: var(--surface);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+ 
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   border: 1px solid var(--border);
@@ -708,7 +707,7 @@
 .news-image {
   position: relative;
   height: 200px;
-  overflow: hidden;
+ 
 }
 
 .news-image img {

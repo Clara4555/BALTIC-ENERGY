@@ -1,14 +1,29 @@
 /* Energy Transition Page Specific Styles */
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+body, html{
+    overflow-x: hidden;
+}
 /* Hero Section */
 .energy-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/MOCKUPS/img1881.png');
-    background-size: cover;
+    background:  url('../assets/MOCKUPS/img1881.png');
+   background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
-    padding: 150px 0 100px;
+    margin-top: 30px;
+    padding: 120px 0 80px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content h1 {

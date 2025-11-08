@@ -1,13 +1,27 @@
 /* HSEQ Page Specific Styles */
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+body, html{
+    overflow-x: hidden;
+}
 /* Hero Section */
 .hseq-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/img1881.png');
+    background:  url('../assets/MOCKUPS/K2.jpg');
     background-size: cover;
+   background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
-    padding: 180px 0 120px;
+    margin-top: 30px;
+    padding: 120px 0 80px;
     text-align: center;
     position: relative;
     overflow: hidden;

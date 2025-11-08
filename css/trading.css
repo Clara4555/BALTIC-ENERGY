@@ -1,13 +1,30 @@
 /* Trading Page Specific Styles */
+/* Base Styles */
+/* EMERGENCY FIX - Add this to your current CSS */
+body, html {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
 
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 15px !important;
+}
+
+* {
+  max-width: 100% !important;
+}
 /* Hero Section */
 .trading-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/MOCKUPS/img1881.png');
-    background-size: cover;
+    background:  url('../assets/MOCKUPS/img1881.png');
+   background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
-    padding: 180px 0 120px;
+    margin-top: 30px;
+    padding: 120px 0 80px;
     text-align: center;
     position: relative;
     overflow: hidden;

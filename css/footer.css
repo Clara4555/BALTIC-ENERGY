@@ -146,6 +146,11 @@
     text-align: center;
 
   }
+  .footer-logo img {
+  max-width:50% !important;
+  height:auto;
+}
+
 }
 
 /* Make footer fully responsive on smaller screens */
@@ -160,6 +165,11 @@
     display: block;
     align-items: center;
   }
+  .footer-logo img {
+  max-width:40% !important;
+  height:auto;
+}
+
 
   .footer-logo {
     justify-content: center;
@@ -189,8 +199,11 @@
   }
 
   .footer-logo img {
-    height: 60px;
-  }
+  max-width:50% !important;
+  height:auto;
+}
+
+
 
   .social-links a {
     width: 36px;

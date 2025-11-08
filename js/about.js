@@ -121,21 +121,4 @@ function initScrollAnimations() {
     });
 }
 
-// Parallax effect for hero section
-function initParallax() {
-    const hero = document.querySelector('.about-hero');
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        
-        if (hero) {
-            hero.style.transform = `translate3d(0px, ${rate}px, 0px)`;
-        }
-    });
-}
-
-// Initialize when page loads
-window.addEventListener('load', function() {
-    initParallax();
-});
+// Parallax behavior moved to js/general.js (shared site script)

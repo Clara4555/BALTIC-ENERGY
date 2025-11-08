@@ -8,7 +8,76 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStatsCounter();
     initializeGoogleTranslate();
     initializeTranslateToggle();
+    initializeResponsiveImages(); // NEW: Responsive images initialization
 });
+
+// NEW: Responsive Images Initialization
+function initializeResponsiveImages() {
+    // Handle responsive images for different screen sizes
+    const heroImages = document.querySelectorAll('.hero-image, .slide img');
+    
+    heroImages.forEach(img => {
+        // Add loading="lazy" for better performance
+        img.setAttribute('loading', 'lazy');
+        
+        // Ensure images have proper alt text
+        if (!img.getAttribute('alt')) {
+            img.setAttribute('alt', 'Website content image');
+        }
+        
+        // Add error handling for failed image loads
+        img.addEventListener('error', function() {
+            console.warn('Image failed to load:', this.src);
+            // Optionally set a fallback image
+            // this.src = '/fallback-image.jpg';
+        });
+        
+        // Add loaded class for potential styling
+        img.addEventListener('load', function() {
+            this.classList.add('loaded');
+        });
+    });
+    
+    // Update image sources based on viewport size if needed
+    updateImagesForViewport();
+    
+    // Re-check on resize
+    window.addEventListener('resize', debounce(updateImagesForViewport, 250));
+}
+
+// NEW: Update images based on viewport size
+function updateImagesForViewport() {
+    const viewportWidth = window.innerWidth;
+    const images = document.querySelectorAll('img[data-src-mobile], img[data-src-tablet], img[data-src-desktop]');
+    
+    images.forEach(img => {
+        let newSrc = img.getAttribute('data-src-desktop'); // Default
+        
+        if (viewportWidth <= 768) {
+            newSrc = img.getAttribute('data-src-mobile') || newSrc;
+        } else if (viewportWidth <= 1024) {
+            newSrc = img.getAttribute('data-src-tablet') || newSrc;
+        }
+        
+        // Only update if the source would change
+        if (newSrc && img.src !== newSrc) {
+            img.src = newSrc;
+        }
+    });
+}
+
+// NEW: Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
 // Navigation Initialization (merged & fixed)
 function initializeNavigation() {
@@ -150,7 +219,7 @@ function initializeLoader() {
     }
 }
 
-// Hero Slider Initialization
+// UPDATED: Hero Slider Initialization with responsive image handling
 function initializeHeroSlider() {
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -166,6 +235,24 @@ function initializeHeroSlider() {
         slides[index].classList.add('active');
         dots[index].classList.add('active');
         currentSlide = index;
+        
+        // NEW: Preload next and previous slides for better performance
+        preloadAdjacentSlides(index);
+    }
+
+    function preloadAdjacentSlides(currentIndex) {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        
+        // Preload images for adjacent slides
+        [nextIndex, prevIndex].forEach(index => {
+            const slideImages = slides[index].querySelectorAll('img');
+            slideImages.forEach(img => {
+                if (img.dataset.src && !img.src) {
+                    img.src = img.dataset.src;
+                }
+            });
+        });
     }
 
     function nextSlide() {
@@ -343,24 +430,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Handle images loading
+// UPDATED: Enhanced image loading with responsive support
 document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', function() { this.classList.add('loaded'); });
-    img.addEventListener('error', function() { this.classList.add('error'); console.warn('Image failed to load:', this.src); });
+    img.addEventListener('load', function() { 
+        this.classList.add('loaded'); 
+        // NEW: Add specific class for hero images
+        if (this.closest('.hero') || this.closest('.slide')) {
+            this.classList.add('hero-image-loaded');
+        }
+    });
+    img.addEventListener('error', function() { 
+        this.classList.add('error'); 
+        console.warn('Image failed to load:', this.src); 
+    });
 });
 
-// Lazy loading for images
+// UPDATED: Enhanced lazy loading for images with responsive support
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
+                
+                // NEW: Check for responsive image data attributes
+                const viewportWidth = window.innerWidth;
+                let srcToLoad = img.dataset.src; // Default
+                
+                if (viewportWidth <= 768 && img.dataset.srcMobile) {
+                    srcToLoad = img.dataset.srcMobile;
+                } else if (viewportWidth <= 1024 && img.dataset.srcTablet) {
+                    srcToLoad = img.dataset.srcTablet;
+                }
+                
+                if (srcToLoad) {
+                    img.src = srcToLoad;
+                }
+                
                 img.classList.remove('lazy');
                 imageObserver.unobserve(img);
             }
         });
+    }, { 
+        rootMargin: '50px 0px', // NEW: Load images slightly before they enter viewport
+        threshold: 0.1 
     });
+    
     document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
@@ -372,5 +486,6 @@ window.KBEC = {
     initializeBackToTop,
     initializeScrollAnimations,
     initializeStatsCounter,
-    initializeGoogleTranslate
+    initializeGoogleTranslate,
+    initializeResponsiveImages // NEW: Added to exports
 };

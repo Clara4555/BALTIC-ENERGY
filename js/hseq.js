@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initHSEQPage() {
-    // Initialize loader
-    initLoader();
+    
     
     // Initialize scroll animations
     initScrollAnimations();
@@ -16,29 +15,10 @@ function initHSEQPage() {
     initCounters();
     
     // Initialize navigation
-    initNavigation();
     
-    // Initialize back to top button
-    initBackToTop();
-    
-    // Initialize Google Translate
-    initGoogleTranslate();
 }
 
-// Loader functionality
-function initLoader() {
-    const loader = document.querySelector('.loader');
-    
-    // Simulate loading time
-    setTimeout(() => {
-        loader.classList.add('fade-out');
-        
-        // Remove loader from DOM after fade out
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    }, 1500);
-}
+
 
 // Scroll animations
 function initScrollAnimations() {
@@ -97,157 +77,10 @@ function formatNumber(num) {
     return num.toString();
 }
 
-// Navigation functionality
-function initNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
-        });
-        
-        // Handle dropdown menus on mobile
-        const dropdownItems = document.querySelectorAll('.has-dropdown');
-        dropdownItems.forEach(item => {
-            const link = item.querySelector('.nav-link');
-            
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    item.classList.toggle('active');
-                    
-                    // Close other dropdowns
-                    dropdownItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                }
-            });
-        });
-    }
-    
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-            
-            // Hide header on scroll down, show on scroll up
-            if (window.scrollY > lastScrollY) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-        } else {
-            header.classList.remove('scrolled');
-            header.classList.remove('hidden');
-        }
-        
-        lastScrollY = window.scrollY;
-    });
-}
 
-// Back to top button
-function initBackToTop() {
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
 
-// Google Translate functionality
-function initGoogleTranslate() {
-    const translateToggle = document.querySelector('.translate-toggle');
-    const googleWidget = document.getElementById('google_translate_element');
-    const headerControls = document.querySelector('.header-controls');
-    
-    if (translateToggle && googleWidget) {
-        translateToggle.addEventListener('click', () => {
-            const isExpanded = translateToggle.getAttribute('aria-expanded') === 'true';
-            
-            translateToggle.setAttribute('aria-expanded', !isExpanded);
-            googleWidget.setAttribute('aria-hidden', isExpanded);
-            headerControls.classList.toggle('open');
-            
-            // Trigger Google Translate widget display
-            if (!isExpanded) {
-                // Small delay to ensure the widget container is visible
-                setTimeout(() => {
-                    const googleCombo = googleWidget.querySelector('.goog-te-combo');
-                    if (googleCombo) {
-                        googleCombo.focus();
-                    }
-                }, 100);
-            }
-        });
-        
-        // Close translator when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!headerControls.contains(e.target) && headerControls.classList.contains('open')) {
-                translateToggle.setAttribute('aria-expanded', 'false');
-                googleWidget.setAttribute('aria-hidden', 'true');
-                headerControls.classList.remove('open');
-            }
-        });
-    }
-    
-    // Style Google Translate dropdown
-    const styleGoogleTranslate = () => {
-        // Wait for Google Translate to load
-        const checkForGoogleTranslate = setInterval(() => {
-            const googleFrame = document.querySelector('.goog-te-banner-frame');
-            if (googleFrame) {
-                clearInterval(checkForGoogleTranslate);
-                
-                // Hide the top banner
-                googleFrame.style.display = 'none';
-                
-                // Style the dropdown
-                const googleCombo = document.querySelector('.goog-te-combo');
-                if (googleCombo) {
-                    googleCombo.style.cssText = `
-                        width: 100%;
-                        padding: 8px 12px;
-                        border-radius: var(--radius-md);
-                        border: 1px solid var(--border);
-                        background: white;
-                        color: var(--text-primary);
-                        font-family: var(--font-primary);
-                    `;
-                }
-            }
-        }, 100);
-    };
-    
-    // Run styling function
-    styleGoogleTranslate();
-}
+
+
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

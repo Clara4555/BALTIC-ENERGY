@@ -2,12 +2,13 @@
 
 /* Hero Section */
 .about-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/MOCKUPS/K2.jpg');
+    background:  url('../assets/MOCKUPS/K2.jpg');
     background-size: cover;
     background-position: center;
     color: white;
     padding: 150px 0 100px;
     text-align: center;
+    overflow: hidden;
    
 }
 

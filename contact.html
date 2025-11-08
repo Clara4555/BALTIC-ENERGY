@@ -8,7 +8,8 @@
    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/contact.css">
-     <link rel="icon" type="image/png" sizes="200x200" href="assets/LOGOS/KBEC.jpg">
+     <link rel="icon" type="image/png" sizes="256x256" href="assets/LOGOS/KBEC PNG.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -330,13 +331,22 @@
                 </div>
                 
                 <div class="map-container">
-                    <div class="map-placeholder">
-                        <div class="map-content">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <h3>Almaty Headquarters</h3>
-                            <p>Almaty City, Almaly District, Chaykovsky St., 95</p>
-                            <a href="#" class="cta-button secondary">Get Directions <i class="fas fa-directions"></i></a>
-                        </div>
+                    <!-- Embedded Google Map for Almaty Headquarters -->
+                    <div class="map-embed">
+                        <iframe
+                            src="https://www.google.com/maps?q=Almaty+City,+Almaly+District,+Chaykovsky+St.,+95&output=embed"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="map-content">
+                        <h3>Almaty Headquarters</h3>
+                        <p>Almaty City, Almaly District, Chaykovsky St., 95</p>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Almaty+City,+Almaly+District,+Chaykovsky+St.,+95" target="_blank" class="cta-button secondary">Get Directions <i class="fas fa-directions"></i></a>
                     </div>
                 </div>
             </div>
@@ -435,9 +445,8 @@
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/general.js"></script>
     <script src="js/home.js"></script>
-       
-
     <script src="js/contact.js"></script>
 </body>
 </html>
